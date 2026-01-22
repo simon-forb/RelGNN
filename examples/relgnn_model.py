@@ -1,15 +1,14 @@
 from typing import Any, Dict, List
 
 import torch
+from relbench.modeling.nn import HeteroEncoder, HeteroTemporalEncoder
+from relgnn_nn import RelGNN
 from torch import Tensor
 from torch.nn import Embedding, ModuleDict
 from torch_frame.data.stats import StatType
 from torch_geometric.data import HeteroData
 from torch_geometric.nn import MLP
 from torch_geometric.typing import NodeType
-
-from relbench.modeling.nn import HeteroEncoder, HeteroTemporalEncoder
-from relgnn_nn import RelGNN
 
 
 class RelGNN_Model(torch.nn.Module):
