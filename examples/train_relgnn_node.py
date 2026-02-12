@@ -21,9 +21,9 @@ from torch_geometric.seed import seed_everything
 from tqdm import tqdm
 
 from tabmodel_for_relbench.f1_simplified import (
-    DriverDNFTaskSimplifiedSchema,
-    DriverTop3TaskSimplifiedSchema,
-    F1SimplifiedDataset,
+    SimplifiedDriverDNF,
+    SimplifiedDriverTop3,
+    SimplifiedF1Dataset,
 )
 from tabmodel_for_relbench.utils import print_binary_classification_metrics
 
@@ -92,9 +92,9 @@ def main():
         torch.set_num_threads(1)
 
     # Load dataset and task.
-    dataset = F1SimplifiedDataset(cache_dir=None)
+    dataset = SimplifiedF1Dataset(cache_dir=None)
     # task = DriverTop3TaskSimplifiedSchema(dataset)
-    task = DriverDNFTaskSimplifiedSchema(dataset)
+    task = SimplifiedDriverDNF(dataset)
 
     assert task.task_type == TaskType.BINARY_CLASSIFICATION, (
         f"This script currently assumes binary classification, got {task.task_type}."
