@@ -25,7 +25,7 @@ from tabmodel_for_relbench.f1_simplified import (
     SimplifiedDriverTop3,
     SimplifiedF1Dataset,
 )
-from tabmodel_for_relbench.utils import print_binary_classification_metrics
+from tabmodel_for_relbench.utils import compute_binary_classification_metrics
 
 
 def parse_args():
@@ -234,7 +234,7 @@ def main():
 
     ground_truth = test_table.df[task.target_col].to_numpy()
     pred_proba = np.stack([1.0 - test_pred, test_pred], axis=1)
-    print_binary_classification_metrics(ground_truth, pred_proba)
+    compute_binary_classification_metrics(ground_truth, pred_proba)
 
 
 if __name__ == "__main__":
